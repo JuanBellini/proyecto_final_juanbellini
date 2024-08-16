@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Blog</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'blog_list' %}">Mi Blog</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}">Acerca de mí</a></li>
+                <li><a href="{% url 'blog_list' %}">Blogs</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'signup' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 Mi Blog</p>
+    </footer>
+</body>
+</html>

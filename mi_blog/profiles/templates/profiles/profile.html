@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Perfil de {{ user.username }}</h1>
+  <img src="{{ user.profile.imagen.url }}" alt="Imagen de perfil">
+  <p>Descripción: {{ user.profile.descripcion }}</p>
+  <p>Página web: <a href="{{ user.profile.pagina_web }}">{{ user.profile.pagina_web }}</a></p>
+  <p>Email: {{ user.email }}</p>
+  <a href="{% url 'profile_edit' %}">Editar Perfil</a>
+{% endblock %}
